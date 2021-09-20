@@ -6,8 +6,10 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_houses")
@@ -20,15 +22,19 @@ public class Houses implements Serializable {
     private String id;
     private String name;
     private String headOfHouse;
-    private String houseValues;
-    private String houseColors;
+
+    @Lob
+    private List<String> houseValues;
+
+    @Lob
+    private List<String> houseColors;
     private String schoolName;
     private String houseMascot;
     private String houseGhost;
     private String houseFounder;
 
     public Houses(String id, String name, String headOfHouse,
-                  String houseValues, String houseColors, String schoolName,
+                  List<String> houseValues, List<String> houseColors, String schoolName,
                   String houseMascot, String houseGhost, String houseFounder) {
         this.id = id;
         this.name = name;
