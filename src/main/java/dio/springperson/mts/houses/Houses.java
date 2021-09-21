@@ -1,13 +1,11 @@
 package dio.springperson.mts.houses;
 
+import dio.springperson.mts.character.Character;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -32,6 +30,9 @@ public class Houses implements Serializable {
     private String houseMascot;
     private String houseGhost;
     private String houseFounder;
+
+    @OneToMany(mappedBy = "houseId")
+    private List<Character> characters;
 
     public Houses(String id, String name, String headOfHouse,
                   List<String> houseValues, List<String> houseColors, String schoolName,
